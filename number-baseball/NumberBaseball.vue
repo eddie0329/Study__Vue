@@ -6,7 +6,7 @@
       <button type="submit">입력</button>
     </form>
     <div>tries: {{ tries.length }}</div>
-    <div></div>
+    <div>{{ result }}</div>
   </div>
 </template>
 
@@ -20,7 +20,6 @@ export default {
     };
   },
   methods: {
-    // TODO: lecture 3-4
     onSubmitForm() {
       this.tries.push(this.value);
       this.value = '';
