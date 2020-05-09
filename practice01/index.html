@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root">
+      <div>{{ number1 }} * {{ number2}} = ??</div>
+      <form @submit.prevent="onSubmit">
+        <input type="number" v-model="inputNumber" ref="answer" />
+        <button>Submit</button>
+        <div>{{ status }}</div>
+      </form>
+    </div>
+  </body>
+  <script>
+    const generateNumber = () => {
+      return Math.ceil(Math.random() * 10);
+    };
+    const findAnswer = (number1, number2) => {
+      return number1 * number2;
+    };
+    const isAnswer = (inputNumber, number1, number2) => {
+      return parseInt(inputNumber) === findAnswer(number1, number2)
+        ? true
+        : false;
+    };
+    const app = new Vue({
+      el: "#root",
+      data: {
+        number1: generateNumber(),
+        number2: generateNumber(),
+        inputNumber: "",
+        status: "",
+      },
+      methods: {
+        onSubmit() {
+          if (isAnswer(this.inputNumber, this.number1, this.number2)) {
+            this.number1 = generateNumber();
+            this.number2 = generateNumber();
+            this.inputNumber = "";
+            this.$refs.answer.focus();
+            this.status = "Correct";
+          } else {
+            this.status = "Incorrect";
+            this.inputNumber = "";
+            this.$refs.answer.focus();
+          }
+        },
+      },
+    });
+  </script>
+</html>

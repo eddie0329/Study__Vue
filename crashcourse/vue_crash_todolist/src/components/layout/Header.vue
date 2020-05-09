@@ -7,7 +7,6 @@
     </div>
   </header>
 </template>
-s
 <script>
 export default {
   name: "Header"

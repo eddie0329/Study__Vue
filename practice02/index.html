@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root">
+      <div>{{ word }}</div>
+      <form @submit.prevent="onSubmit">
+        <input type="text" v-model="inputWord" ref="answer" />
+        <button>Submit</button>
+        <div>{{ status }}</div>
+      </form>
+    </div>
+  </body>
+  <script>
+    const isAnswer = (word, inputWord) => {
+      return word[word.length - 1] === inputWord[0] ? true : false;
+    };
+
+    const app = new Vue({
+      el: "#root",
+      data: {
+        word: "red",
+        inputWord: "",
+        status: "",
+      },
+      methods: {
+        reInitInput(isAnswer) {
+          if (isAnswer) {
+            this.word = this.inputWord;
+            this.status = "Correct";
+          } else {
+            this.status = "Incorrect";
+          }
+          this.inputWord = "";
+          this.$refs.answer.focus();
+        },
+
+        onSubmit() {
+          this.reInitInput(isAnswer(this.word, this.inputWord));
+        },
+      },
+    });
+  </script>
+</html>
