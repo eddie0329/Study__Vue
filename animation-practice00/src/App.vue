@@ -42,10 +42,10 @@ export default {
   transition: all 0.3s ease;
 }
 #myStagger > .item-from {
-  transition: all 0.1s cubic-bezier(1, 0.5, 0.8, 1);
+  transition: all 0.2s cubic-bezier(0, 0.3, 0.2, 0.9);
 }
 #myStagger > .item-to {
-  transform: translateX(-10px);
+  transform: translateX(-100px);
   opacity: 0;
 }
 </style>
