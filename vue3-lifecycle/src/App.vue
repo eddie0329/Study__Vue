@@ -6,6 +6,7 @@
 <script>
 import HelloWorld from './components/HelloWorld.vue';
 import { onMounted, nextTick, onUpdated } from 'vue';
+import mounted from './components/OnMounted';
 
 export default {
   name: 'App',
@@ -24,6 +25,7 @@ export default {
     onUpdated(() => {
       console.log('update');
     });
+    mounted();
 
     // RESULT:
     // before created
