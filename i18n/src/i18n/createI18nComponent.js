@@ -2,8 +2,7 @@ import Vue from 'vue';
 import Translator from './Translator';
 
 const i18nFactory = (...args) => {
-  const translator = new Translator('en')._getJsonFile(...args);
-
+  const translator = new Translator('kr')._getJsonFile(...args);
   return Vue.component('i18n', {
     created() {
       this._i18n = translator._getInternationals();

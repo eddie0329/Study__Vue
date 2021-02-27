@@ -15,10 +15,16 @@ import createI18nComponent from './i18n/createI18nComponent';
 import areanJsonFile from './lang/arena';
 import commonJsonFile from './lang/common';
 import greetingsJsonFile from './lang/greetings';
+import userJsonFile from './lang/user';
 
 export default {
   components: {
-    i18n: createI18nComponent(areanJsonFile, commonJsonFile, greetingsJsonFile)
+    i18n: createI18nComponent(
+      areanJsonFile,
+      commonJsonFile,
+      greetingsJsonFile,
+      userJsonFile
+    )
   }
 };
 </script>

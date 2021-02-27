@@ -15,6 +15,19 @@ export default class Translator {
       _reduce(
         jsonFile,
         (result, value, key) => {
+          if (/{*}/.test(value[this.lang])) {
+            result[key] = opts => {
+              let template = value[this.lang];
+              for (let key in opts) {
+                template = template.replace(
+                  new RegExp('\\$\\{' + key + '\\}', 'g'),
+                  opts[key]
+                );
+              }
+              return template;
+            };
+            return result;
+          }
           result[key] = value[this.lang];
           return result;
         },
