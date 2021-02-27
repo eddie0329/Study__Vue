@@ -1,9 +1,7 @@
 import _reduce from 'lodash/reduce';
-import I18nErrors, { errorTypes } from '../i18n/I18nErrors';
+import I18nErrors, { errorTypes } from './I18nErrors';
 
-const LANG_PATH = '@/lang';
-
-export default class Mediator {
+export default class Translator {
   constructor(lang) {
     if (!lang) throw new I18nErrors(errorTypes.NO_LANG);
     this.lang = lang;
@@ -11,13 +9,8 @@ export default class Mediator {
     return this;
   }
 
-  _getCommonFiles() {
-    const commonFile = require(`${LANG_PATH}/common`);
-    this._parseLang(commonFile);
-    return this;
-  }
-
   _parseLang(jsonFile) {
+    if (!jsonFile) throw new I18nErrors(errorTypes.NO_JSON);
     this.internationals = Object.assign(
       _reduce(
         jsonFile,
@@ -35,20 +28,6 @@ export default class Mediator {
   _getJsonFile(...args) {
     args.forEach(file => {
       this._parseLang(file);
-    });
-    return this;
-  }
-
-  _getFiles(...args) {
-    args.forEach(filename => {
-      if (typeof filename !== 'string')
-        throw new I18nErrors(errorTypes.NON_STRING);
-      try {
-        const jsonFile = require(`${LANG_PATH}/${filename}`);
-        this._parseLang(jsonFile);
-      } catch (_) {
-        throw new I18nErrors(errorTypes.NOT_FOUND, filename);
-      }
     });
     return this;
   }

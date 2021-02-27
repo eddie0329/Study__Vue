@@ -44,4 +44,14 @@ describe('i18n errors test', () => {
       }
     });
   });
+
+  describe('no json test', () => {
+    it('test1', () => {
+      try {
+        throw new I18nErrors(errorTypes.NO_JSON);
+      } catch (error) {
+        expect(error.message).toEqual('i18n error: require json file.');
+      }
+    });
+  });
 });

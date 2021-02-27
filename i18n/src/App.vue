@@ -1,23 +1,24 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
+    <i18n>
+      <div id="nav">
+        <router-link to="/">Home</router-link> |
+        <router-link to="/about">About</router-link>
+      </div>
+      <router-view />
+    </i18n>
   </div>
 </template>
 
 <script>
-import Mediator from './i18n/Mediator';
-import i18nArena from './lang/arena';
+import createI18nComponent from './i18n/createI18nComponent';
+import areanJsonFile from './lang/arena';
+import commonJsonFile from './lang/common';
+import greetingsJsonFile from './lang/greetings';
 
 export default {
-  beforeMount() {
-    console.log(new Mediator('en')._getJsonFile(i18nArena));
-  },
-  provide: {
-    i18n: new Mediator('en')._getJsonFile(i18nArena)._getInternationals()
+  components: {
+    i18n: createI18nComponent(areanJsonFile, commonJsonFile, greetingsJsonFile)
   }
 };
 </script>
