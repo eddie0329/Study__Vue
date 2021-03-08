@@ -9,6 +9,7 @@
     <br />
     <button @click="onClickSuccess">SUCCESS</button>
     <button @click="onClickFail">FAIL</button>
+    <button @click="onClickError">ERROR</button>
   </div>
 </template>
 
@@ -20,6 +21,9 @@ export default {
     },
     onClickFail() {
       this.$toast('FAIL', 'HELLO');
+    },
+    onClickError() {
+      this.$toast('eddie', 'eddie');
     }
   }
 };

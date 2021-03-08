@@ -23,6 +23,8 @@ export default {
   },
   methods: {
     add(type, content) {
+      if (type !== 'SUCCESS' && type !== 'FAIL')
+        throw new Error('TOAST ERROR: Type is not defined');
       this.on = true;
       this.toasts.push({ id: this.seq++, type, content });
     },
