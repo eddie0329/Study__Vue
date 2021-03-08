@@ -28,6 +28,7 @@ export default {
     },
     close(id) {
       this.toasts = this.toasts.filter(toast => toast.id !== id);
+      if (this.toasts.length === 0) this.on = false;
     }
   }
 };
