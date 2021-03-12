@@ -1,4 +1,4 @@
-const getTestData = ({ name, gender }) => [
+const getTestData = ({ name, gender, onClick }) => [
   {
     id: 0,
     compName: 'Test1',
@@ -8,13 +8,19 @@ const getTestData = ({ name, gender }) => [
     vModel: {
       address: 'TEST'
     },
-    className: ['mb', 'mt']
+    className: ['mb', 'mt'],
+    events: {
+      click: onClick
+    }
   },
   {
     id: 1,
     compName: 'Test2',
     props: {
       gender
+    },
+    events: {
+      onChange: onClick
     }
   }
 ];

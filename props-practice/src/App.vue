@@ -1,16 +1,27 @@
 <template>
-  <div id="app"></div>
+  <div id="app">
+    <component
+      v-for="comp in compInfos"
+      :key="comp.id"
+      :is="comp.compName"
+      v-bind="comp.props"
+      :class="comp.className"
+      v-on="comp.events"
+      v-model="comp.vModel"
+    ></component>
+  </div>
 </template>
 
 <script>
 import _reduce from 'lodash/reduce';
 import _cloneDeep from 'lodash/cloneDeep';
 import getTestData from './data/testData';
-import Director from './director/Director';
 import Test1 from './components/Test1';
+import Test2 from './components/Test2';
 
 export default {
   name: 'App',
+  components: { Test1, Test2 },
   data: () => ({
     name: 'eddie',
     gender: 'male',
@@ -27,13 +38,12 @@ export default {
       },
       {}
     );
-    this.compInfos = getTestData(parseData);
+    this.compInfos = getTestData({ ...parseData, onClick: this.onClick });
   },
-  render(h) {
-    console.log('HELLO');
-    const self = this;
-    new Director(h, self);
-    return h('div', [Test1]);
+  methods: {
+    onClick() {
+      console.log('HELLO');
+    },
   },
 };
 </script>

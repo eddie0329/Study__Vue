@@ -4,7 +4,8 @@
     <h2>name: {{ name }}</h2>
     <h2>gender: {{ gender }}</h2>
     <h2>value: {{ value }}</h2>
-    <input type="text" :value="value" @input="onInput" />
+    <input type="text" :value="value.address" @input="onInput" />
+    <button @click="$emit('click')">CLICK</button>
     <hr />
   </div>
 </template>
@@ -21,13 +22,17 @@ export default {
       default: '',
     },
     value: {
-      type: String,
-      default: '',
+      type: Object,
+      default: () => ({}),
     },
   },
   methods: {
     onInput(e) {
-      this.$emit('input', e.target.value);
+      const temp = {
+        ...this.value,
+        address: e.target.value,
+      };
+      this.$emit('input', temp);
     },
   },
 };

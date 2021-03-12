@@ -4,6 +4,7 @@
     <h2>name: {{ name }}</h2>
     <h2>gender: {{ gender }}</h2>
     <h2>value: {{ value }}</h2>
+    <button @click="$emit('onChange')">CLICK</button>
     <hr />
   </div>
 </template>
