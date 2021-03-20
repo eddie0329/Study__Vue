@@ -19,7 +19,6 @@ export default {
         }, 3000);
       });
       childResolve();
-      console.log('BYE');
     },
   },
 };

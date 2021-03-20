@@ -17,8 +17,10 @@ export default {
         this.$emit('click', resolve);
       });
     },
-    onClick() {
-      this.emit();
+    async onClick() {
+      await this.emit();
+      this.isLoaded = true;
+      console.log('BYE');
     },
   },
 };
