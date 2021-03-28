@@ -1,6 +1,6 @@
 <template>
   <div id="app" app>
-    <AboutContainer class="about-container"/>
+    <AboutContainer class="about-container" />
     <NoticeContainer class="notice-container" />
   </div>
 </template>
@@ -37,22 +37,32 @@ export default {
     .clear;
     width: calc(100% - 57px - 375px);
     .mr(57);
-  };
+  }
   .notice-container {
     .fl;
     .clear;
     .w(375);
-  };
+  }
+
+  @media (max-width: @screen-xl-min) {
+    .p(50, 58);
+    .about-container {
+      width: calc(100% - 57px - 300px);
+    }
+    .notice-container {
+      .w(300);
+    }
+  }
 
   @media (max-width: @screen-lg-min) {
     .p(40, 58);
     .about-container {
       float: none;
       .w(100%);
-    };
+    }
     .notice-container {
       .w(100%);
-    };
+    }
   }
   @media (max-width: @screen-md-min) {
     .p(20, 40);
