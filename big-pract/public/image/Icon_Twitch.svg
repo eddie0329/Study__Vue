@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" fill="none" viewBox="0 0 56 56">
+    <g clip-path="url(#clip0)">
+        <mask id="mekrv8ggra" width="33" height="38" x="11" y="9" maskUnits="userSpaceOnUse">
+            <path fill="#fff" fill-rule="evenodd" d="M11.666 9.333h31.967v37.333H11.666V9.333z" clip-rule="evenodd"/>
+        </mask>
+        <g mask="url(#mekrv8ggra)">
+            <path fill="#fff" fill-rule="evenodd" d="M41.066 26.6l-5.367 5.366h-5.366l-4.667 4.667V32.2h-6.067V12.133h21.467V26.6zM18.433 9.333L11.666 16.1v24.033h7.933v6.533h.234l6.533-6.533h5.367l11.9-11.9v-18.9h-25.2z" clip-rule="evenodd"/>
+        </g>
+        <mask id="icshqc8k9b" width="33" height="38" x="11" y="9" maskUnits="userSpaceOnUse">
+            <path fill="#fff" fill-rule="evenodd" d="M11.666 9.333h31.967v37.333H11.666V9.333z" clip-rule="evenodd"/>
+        </mask>
+        <g mask="url(#icshqc8k9b)">
+            <path fill="#fff" fill-rule="evenodd" d="M29.636 16.565h-2.567V24.5h2.567v-7.934z" clip-rule="evenodd"/>
+        </g>
+        <mask id="xeq1n525pc" width="33" height="38" x="11" y="9" maskUnits="userSpaceOnUse">
+            <path fill="#fff" fill-rule="evenodd" d="M11.666 9.333h31.967v37.333H11.666V9.333z" clip-rule="evenodd"/>
+        </mask>
+        <g mask="url(#xeq1n525pc)">
+            <path fill="#fff" fill-rule="evenodd" d="M37.098 16.8h-2.8v7.933h2.566V16.8h.234z" clip-rule="evenodd"/>
+        </g>
+    </g>
+    <defs>
+        <clipPath id="clip0">
+            <path fill="#fff" d="M0 0H31.967V37.333H0z" transform="translate(11.666 9.333)"/>
+        </clipPath>
+    </defs>
+</svg>
