@@ -3,6 +3,7 @@
     <div class="hello-modal__wrapper">
       <button @click="$emit('close')" class="hello-modal__cancel-btn">X</button>
       <h1>HELLO</h1>
+      <h3>{{ options.gender }}</h3>
       <button @click="$emit('resolve', 'eddie')">RESOLVE</button>
       <button @click="$emit('reject')">REJECT</button>
     </div>
@@ -11,6 +12,12 @@
 
 <script>
 export default {
+  props: {
+    options: {
+      type: Object,
+      default: () => ({}),
+    },
+  },
   data: () => ({
     result: 'eddie',
   }),

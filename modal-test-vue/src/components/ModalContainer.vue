@@ -1,5 +1,5 @@
 <template>
-  <div v-if="on" class="modal-container">
+  <div v-if="modals.length" class="modal-container">
     <component
       v-for="modal in modals"
       :key="modal.id"
@@ -17,12 +17,10 @@ export default {
   name: 'ModalContainer',
   data: () => ({
     seq: 0,
-    on: false,
     modals: [],
   }),
   methods: {
     add(component, options) {
-      this.on = true;
       return new Promise((resolve, reject) => {
         this.modals.push({
           id: this.seq++,
@@ -45,7 +43,6 @@ export default {
     },
     close(id) {
       this.modals = this.modals.filter((m) => m.id !== id);
-      this.on = false;
     },
   },
 };
