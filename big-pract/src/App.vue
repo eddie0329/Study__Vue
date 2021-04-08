@@ -1,19 +1,22 @@
 <template>
   <div id="app" app>
-    <AboutContainer class="about-container" />
     <NoticeContainer class="notice-container" />
+    <AboutContainer class="about-container" />
+    <ArenaContainer />
   </div>
 </template>
 
 <script>
 import NoticeContainer from './components/container/NoticeContainer';
 import AboutContainer from './components/container/AboutContainer';
+import ArenaContainer from './components/container/ArenaContainer';
 
 export default {
   name: 'App',
   components: {
     NoticeContainer,
-    AboutContainer
+    AboutContainer,
+    ArenaContainer
   }
 };
 </script>
@@ -33,15 +36,23 @@ export default {
   .p(64, 320);
 
   .about-container {
-    .fl;
+    .fr;
     .clear;
     width: calc(100% - 57px - 375px);
     .mr(57);
+    .mb(20);
   }
   .notice-container {
-    .fl;
+    .fr;
     .clear;
     .w(375);
+  }
+
+  [arena-container] {
+    .fr;
+    .clear;
+    width: calc(100% - 57px - 300px);
+    .mr(57);
   }
 
   @media (max-width: @screen-xl-min) {
@@ -61,6 +72,11 @@ export default {
       .w(100%);
     }
     .notice-container {
+      float: none;
+      .w(100%);
+    }
+    [arena-container] {
+      float: none;
       .w(100%);
     }
   }
