@@ -1,5 +1,9 @@
 <template>
   <div id="app" app>
+    <button @click="onClick">
+      <button @click="onSave">save</button>
+      <button>cancel</button>
+    </button>
     <NoticeContainer class="notice-container" />
     <AboutContainer class="about-container" />
     <ArenaContainer />
@@ -16,8 +20,16 @@ export default {
   components: {
     NoticeContainer,
     AboutContainer,
-    ArenaContainer
-  }
+    ArenaContainer,
+  },
+  methods: {
+    onClick(e) {
+      console.log('HELLO', e.target);
+    },
+    onSave(e) {
+      console.log('save', e);
+    },
+  },
 };
 </script>
 

@@ -18,14 +18,20 @@ import greetingsJsonFile from './lang/greetings';
 import userJsonFile from './lang/user';
 
 export default {
+  created() {
+    const temp = {
+      name: 'eddie',
+    };
+    console.log(temp?.name?.text);
+  },
   components: {
     i18n: createI18nComponent(
       areanJsonFile,
       commonJsonFile,
       greetingsJsonFile,
       userJsonFile
-    )
-  }
+    ),
+  },
 };
 </script>
 
