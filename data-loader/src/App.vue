@@ -1,8 +1,13 @@
 <template>
   <div id="app">
-    <div class="holder" v-for="(els, index) in map" :key="index">
-      <component v-for="(el, index2) in els" :key="`${index}-${index2}`" :is="el.compName" v-model="el.props" />
-    </div>
+    <template v-if="map">
+      <div class="holder" v-for="(els, index) in map" :key="index">
+        <component v-for="(el, index2) in els" :key="`${index}-${index2}`" :is="el.compName" v-model="el.props" />
+      </div>
+    </template>
+    <template v-else>
+      <h1>LOADING....</h1>
+    </template>
   </div>
 </template>
 
