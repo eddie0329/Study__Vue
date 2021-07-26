@@ -7,7 +7,7 @@
       <router-link to="/about">About</router-link>
     </div>
     <!-- <keep-alive> -->
-      <router-view :is-login="auth" />
+    <router-view :is-login="auth" />
     <!-- </keep-alive> -->
   </div>
 </template>
@@ -19,8 +19,12 @@ export default {
       console.log(this.$router);
     }
   },
+  created() {
+    console.log(this.temp);
+  },
   data: () => ({
-    auth: false
+    auth: false,
+    temp: {}
   }),
   methods: {
     onClick() {
