@@ -1,5 +1,5 @@
 class DataMapper {
-  load() { throw new Error('Nessecary to override load.'); }
+  load() { throw new Error('Need to override load.'); }
 }
 
 export default DataMapper;

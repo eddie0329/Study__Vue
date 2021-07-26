@@ -64,8 +64,8 @@ class UserDataMapper extends DataMapper {
    * 
    * @returns {array}
    */
-  load() {
-    return Array.isArray(this.#datas) ? this.#datas.map(data => new UserDataComposer(data).compose()) : [new UserDataComposer(this.#datas).compose()];
+  map() {
+    return this.#datas.map(data => new UserDataComposer(data).compose());
   }
 }
 

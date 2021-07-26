@@ -6,7 +6,7 @@ const dataIter = async function* (...aIters) {
 
 const dataLoader = async (dataMapper, ...fetches) => {
   for await (const data of dataIter(...fetches)) {
-    return new dataMapper(data).load();
+    return new dataMapper(data).map();
   }
 };
 

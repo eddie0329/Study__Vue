@@ -6,7 +6,7 @@ class UserService {
   }
 
   *getUsers() {
-    yield this.#api.get('users/1');
+    yield this.#api.get('users');
   }
 }
 
