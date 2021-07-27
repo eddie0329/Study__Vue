@@ -49,15 +49,15 @@ class UserDataComposer extends DataComposer {
 }
 
 class UserDataMapper extends DataMapper {
-  #datas;
+  #arrayData;
 
   /**
    * 
-   * @param {[UserData]} datas 
+   * @param {[UserData]} arrayData
    */
-  constructor(datas) {
+  constructor(arrayData) {
     super();
-    this.#datas = datas;
+    this.#arrayData = arrayData;
   }
 
   /**
@@ -65,7 +65,7 @@ class UserDataMapper extends DataMapper {
    * @returns {array}
    */
   map() {
-    return this.#datas.map(data => new UserDataComposer(data).compose());
+    return this.#arrayData.map(data => new UserDataComposer(data).compose());
   }
 }
 
