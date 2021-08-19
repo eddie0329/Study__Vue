@@ -1,28 +1,18 @@
 <template>
   <div id="app">
-    <Provider :initialState="getInputs()">
+    <InputProvider>
       <Child1 />
-    </Provider>
+    </InputProvider>
   </div>
 </template>
 
 <script>
-import Provider from './components/Provider.vue';
+import InputProvider from './provider/InputsProvider.vue';
 import Child1 from './components/Child1.vue';
 
 export default {
   name: 'App',
-  components: { Provider, Child1 },
-  methods: {
-    getInputs() {
-      return {
-        test: 'aaa',
-        title: '',
-        temp: 'helo',
-        completed: false,
-      };
-    },
-  },
+  components: { InputProvider, Child1 },
 };
 </script>
 

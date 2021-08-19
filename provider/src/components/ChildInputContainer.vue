@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import TextInput from './TextInput.vue';
-import Checkbox from './Checkbox.vue';
+import TextInput from './general/TextInput.vue';
+import Checkbox from './general/Checkbox.vue';
 
 export default {
   inject: ['state', 'dispatch'],
