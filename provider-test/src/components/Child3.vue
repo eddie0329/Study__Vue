@@ -12,7 +12,7 @@ import { mapState, mapGetters, mapMutations } from '../utils/providerMixin';
 
 export default {
   mixins: [
-    mapState({ count: 'count' }),
+    mapState(['count']),
     mapGetters({ double: 'double' }),
     mapMutations({ inc: 'increment', dec: 'decrement' })
   ]
