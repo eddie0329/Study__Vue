@@ -15,8 +15,8 @@ export default {
       return this.state.count;
     },
     double() {
-      return this.getters.double();
-    }
+      return this.getters.double;
+    },
   },
   methods: {
     inc() {

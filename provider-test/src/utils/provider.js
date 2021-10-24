@@ -1,11 +1,13 @@
 import Vue from 'vue';
 
 class Provider {
+  #vm;
   #state;
   #mutations;
   #getters;
 
   constructor() {
+    this.#vm = new Vue();
     return this;
   }
 
@@ -27,10 +29,16 @@ class Provider {
   }
 
   setGetters(getters) {
-    this.#getters = Object.entries(getters).reduce((acc, [key, value]) => {
-      acc[key] = () => value(this.#state);
-      return acc;
-    }, {});
+    const computed = {}
+    Object.entries(getters).forEach(([key, value]) => {
+      Object.defineProperty(computed, key, {
+        get: () => {
+          return value(this.#state, this.#getters);
+        },
+        enumerable: true
+      });
+    });
+    this.#getters = computed;
     return this;
   }
 
@@ -51,8 +59,6 @@ class Provider {
   }
 }
 
-// const provider = new Provider();
-
 export const providerFactory = ({ state, getters, mutations }) => {
   return new Provider()
     .setState(state)
@@ -61,5 +67,8 @@ export const providerFactory = ({ state, getters, mutations }) => {
     .build();
 };
 
-// const getState = () => {};
+// const getState = (args) => ({
+
+// });
+
 // const getGetters = () => {};
