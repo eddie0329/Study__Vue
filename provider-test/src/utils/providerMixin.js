@@ -39,7 +39,7 @@ const typeValidator = ({ contextValue, target, entries }) => {
   }
 };
 
-export const mapState = state => {
+export const mapContextState = state => {
   const _state = {};
   typeValidator({ 
     contextValue: 'state', 
@@ -54,7 +54,7 @@ export const mapState = state => {
   };
 };
 
-export const mapGetters = getters => {
+export const mapContextGetters = getters => {
   const _getters = {};
   typeValidator({
     contextValue: 'getters',
@@ -69,7 +69,7 @@ export const mapGetters = getters => {
   };
 };
 
-export const mapMutations = mutations => {
+export const mapConetextMutations = mutations => {
   const _mutations = {};
   typeValidator({
     contextValue: 'mutations',
