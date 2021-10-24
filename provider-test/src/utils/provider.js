@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import { err } from './errhandler';
 class Provider {
   #state;
   #mutations;
@@ -21,7 +22,7 @@ class Provider {
   }
 
   typeGuard(partions) {
-    if (typeof partions !== 'object') throw new Error(`Provider Error: invalid partions: ${partions}`);
+    if (typeof partions !== 'object') err(`invalid partions: ${partions}`);
   }
 
   setState(state) {

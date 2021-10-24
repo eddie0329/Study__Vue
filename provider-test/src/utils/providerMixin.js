@@ -1,9 +1,20 @@
 import _get from 'lodash/get';
 import _isArray from 'lodash/isArray';
 import _isObject from 'lodash/isObject';
+import { err } from './errhandler';
+
+const typeValidator = {
+  data: {
+    string: true,
+  },
+  validate(el) {
+    this.data[typeof el] ?? err(`el must string: ${el} : ${typeof el}`);
+  }
+};
 
 const objectEntryMapper = ({ contextValue, target, entries }) => {
   Object.entries(entries).forEach(([key, value]) => {
+    typeValidator.validate(value);
     target[key] = function(payload) {
       const valueGotten = _get(this, `${contextValue}.${value}`);
       return typeof valueGotten === 'function'
@@ -15,6 +26,7 @@ const objectEntryMapper = ({ contextValue, target, entries }) => {
 
 const arrayEntryMapper = ({ contextValue, target, entries }) => {
   entries.forEach(entry => {
+    typeValidator.validate(entry);
     target[entry] = function(payload) {
       const valueGotten = _get(this, `${contextValue}.${entry}`);
       return typeof valueGotten === 'function'
@@ -24,7 +36,7 @@ const arrayEntryMapper = ({ contextValue, target, entries }) => {
   });
 };
 
-const typeValidator = ({ contextValue, target, entries }) => {
+const entryTypeTable = ({ contextValue, target, entries }) => {
   switch (true) {
     case _isArray(entries):
       arrayEntryMapper({ contextValue, target, entries });
@@ -33,15 +45,13 @@ const typeValidator = ({ contextValue, target, entries }) => {
       objectEntryMapper({ contextValue, target, entries });
       break;
     default:
-      throw new Error(
-        `Provider Error: entries should either array or object: ${entries}`
-      );
+      err(`entries should either array or object: ${entries}`);
   }
 };
 
 export const mapContextState = state => {
   const _state = {};
-  typeValidator({ 
+  entryTypeTable({ 
     contextValue: 'state', 
     target: _state, 
     entries: state 
@@ -56,7 +66,7 @@ export const mapContextState = state => {
 
 export const mapContextGetters = getters => {
   const _getters = {};
-  typeValidator({
+  entryTypeTable({
     contextValue: 'getters',
     target: _getters,
     entries: getters
@@ -71,7 +81,7 @@ export const mapContextGetters = getters => {
 
 export const mapConetextMutations = mutations => {
   const _mutations = {};
-  typeValidator({
+  entryTypeTable({
     contextValue: 'mutations',
     target: _mutations,
     entries: mutations
