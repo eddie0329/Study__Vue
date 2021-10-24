@@ -26,10 +26,17 @@ class Provider {
       data: {
         object: true
       },
+      err(providerPartions) {
+        err(
+          `invalid partions: ${providerPartions} : ${typeof providerPartions}`
+        );
+      },
       validate(providerPartions) {
-        this.data[typeof providerPartions] ?? err(`invalid partions: ${providerPartions} : ${typeof providerPartions}`);
+        Array.isArray(providerPartions)
+          ? this.err(providerPartions)
+          : this.data[typeof providerPartions] ?? this.err(providerPartions);
       }
-    }
+    };
   }
 
   setState(state) {
@@ -40,7 +47,7 @@ class Provider {
 
   setGetters(getters) {
     this.partionsTypeValidator.validate(getters);
-    const computed = {}
+    const computed = {};
     Object.entries(getters).forEach(([key, value]) => {
       Object.defineProperty(computed, key, {
         get: () => {
