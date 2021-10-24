@@ -1,18 +1,18 @@
 <template>
   <div id="app">
-    <provider>
+    <context-provider>
       <Child1 />
-    </provider>
+    </context-provider>
   </div>
 </template>
 
 <script>
 import Child1 from './components/Child1.vue';
-import Provider from './utils/Provider.vue';
+import ContextProvider from './utils/ContextProvider.vue';
 
 export default {
   name: 'App',
-  components: { Child1, Provider },
+  components: { Child1, ContextProvider },
 };
 </script>
 

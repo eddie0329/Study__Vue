@@ -6,7 +6,7 @@
 import { providerFactory } from './provider';
 
 export default {
-  name: 'Provider',
+  name: 'ContextProvider',
   provide() {
     const state = {
       count: 0
