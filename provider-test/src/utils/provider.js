@@ -1,13 +1,10 @@
 import Vue from 'vue';
-
 class Provider {
-  #vm;
   #state;
   #mutations;
   #getters;
 
   constructor() {
-    this.#vm = new Vue();
     return this;
   }
 
@@ -66,9 +63,3 @@ export const providerFactory = ({ state, getters, mutations }) => {
     .setGetters(getters)
     .build();
 };
-
-// const getState = (args) => ({
-
-// });
-
-// const getGetters = () => {};

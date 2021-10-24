@@ -8,24 +8,14 @@
 </template>
 
 <script>
+import { mapState, mapGetters, mapMutations } from '../utils/providerMixin';
+
 export default {
-  inject: ['state', 'mutations', 'getters'],
-  computed: {
-    count() {
-      return this.state.count;
-    },
-    double() {
-      return this.getters.double;
-    },
-  },
-  methods: {
-    inc() {
-      this.mutations.increment();
-    },
-    dec() {
-      this.mutations.decrement();
-    }
-  }
+  mixins: [
+    mapState({ count: 'count' }),
+    mapGetters({ double: 'double' }),
+    mapMutations({ inc: 'increment', dec: 'decrement' })
+  ]
 };
 </script>
 
