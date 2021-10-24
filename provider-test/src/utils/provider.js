@@ -21,18 +21,25 @@ class Provider {
     return this.#getters;
   }
 
-  typeGuard(partions) {
-    if (typeof partions !== 'object') err(`invalid partions: ${partions}`);
+  get partionsTypeValidator() {
+    return {
+      data: {
+        object: true
+      },
+      validate(providerPartions) {
+        this.data[typeof providerPartions] ?? err(`invalid partions: ${providerPartions} : ${typeof providerPartions}`);
+      }
+    }
   }
 
   setState(state) {
-    this.typeGuard(state);
+    this.partionsTypeValidator.validate(state);
     this.#state = Vue.observable(state);
     return this;
   }
 
   setGetters(getters) {
-    this.typeGuard(getters);
+    this.partionsTypeValidator.validate(getters);
     const computed = {}
     Object.entries(getters).forEach(([key, value]) => {
       Object.defineProperty(computed, key, {
@@ -47,7 +54,7 @@ class Provider {
   }
 
   setMutations(mutations) {
-    this.typeGuard(mutations)
+    this.partionsTypeValidator.validate(mutations);
     this.#mutations = Object.entries(mutations).reduce((acc, [key, value]) => {
       acc[key] = payload => value(this.#state, payload);
       return acc;
