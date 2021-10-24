@@ -34,7 +34,7 @@ const typeValidator = ({ contextValue, target, entries }) => {
       break;
     default:
       throw new Error(
-        `Provider Error: Entries should either array or object: ${entries}`
+        `Provider Error: entries should either array or object: ${entries}`
       );
   }
 };
