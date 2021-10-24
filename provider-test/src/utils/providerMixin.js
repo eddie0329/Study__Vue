@@ -51,13 +51,14 @@ const entryTypeTable = ({ contextValue, target, entries }) => {
 
 export const mapContextState = state => {
   const _state = {};
+  const contextValue = 'state';
   entryTypeTable({ 
-    contextValue: 'state', 
+    contextValue, 
     target: _state, 
     entries: state 
   });
   return {
-    inject: ['state'],
+    inject: [contextValue],
     computed: {
       ..._state
     }
@@ -66,13 +67,14 @@ export const mapContextState = state => {
 
 export const mapContextGetters = getters => {
   const _getters = {};
+  const contextValue = 'getters';
   entryTypeTable({
-    contextValue: 'getters',
+    contextValue,
     target: _getters,
     entries: getters
   });
   return {
-    inject: ['getters'],
+    inject: [contextValue],
     computed: {
       ..._getters
     }
@@ -81,13 +83,14 @@ export const mapContextGetters = getters => {
 
 export const mapConetextMutations = mutations => {
   const _mutations = {};
+  const contextValue = 'mutations';
   entryTypeTable({
-    contextValue: 'mutations',
+    contextValue,
     target: _mutations,
     entries: mutations
   });
   return {
-    inject: ['mutations'],
+    inject: [contextValue],
     methods: {
       ..._mutations
     }
