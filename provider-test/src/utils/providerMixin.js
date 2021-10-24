@@ -1,10 +1,17 @@
-export const mapState = states => {
+import _get from 'lodash/get';
+
+const objectEntryMapper = ({ contextValue, target, entries }) => {
+  Object.entries(entries).forEach(([key, value]) => {
+    target[key] = function(payload) {
+      const valueGotten = _get(this, `${contextValue}.${value}`);
+      return typeof valueGotten  === 'function' ? valueGotten(payload) : valueGotten;
+    }
+  })
+}
+
+export const mapState = state => {
   const _state = {};
-  Object.entries(states).forEach(([key, value]) => {
-    _state[key] = function() {
-      return this.state[value];
-    };
-  });
+  objectEntryMapper({ contextValue: 'state', target: _state, entries: state });
   return {
     inject: ['state'],
     computed: {
@@ -15,11 +22,7 @@ export const mapState = states => {
 
 export const mapGetters = getters => {
   const _getters = {};
-  Object.entries(getters).forEach(([key, value]) => {
-    _getters[key] = function() {
-      return this.getters[value];
-    };
-  });
+  objectEntryMapper({ contextValue: 'getters', target: _getters, entries: getters })
   return {
     inject: ['getters'],
     computed: {
@@ -30,11 +33,7 @@ export const mapGetters = getters => {
 
 export const mapMutations = mutations => {
   const _mutations = {};
-  Object.entries(mutations).forEach(([key, value]) => {
-    _mutations[key] = function() {
-      return this.mutations[value]();
-    };
-  });
+  objectEntryMapper({ contextValue: 'mutations', target: _mutations, entries: mutations })
   return {
     inject: ['mutations'],
     methods: {

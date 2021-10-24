@@ -2,8 +2,8 @@
   <div>
     <h1>COUNT: {{ count }}</h1>
     <h2>DOUBLE: {{ double }}</h2>
-    <button @click="inc">+</button>
-    <button @click="dec">-</button>
+    <button @click="inc(2)">+</button>
+    <button @click="dec(2)">-</button>
   </div>
 </template>
 

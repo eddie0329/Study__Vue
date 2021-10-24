@@ -15,11 +15,11 @@ export default {
       double: state => state.count * 2
     };
     const mutations = {
-      increment(state) {
-        state.count += 1;
+      increment(state, payload) {
+        state.count += payload;
       },
-      decrement(state) {
-        state.count -= 1;
+      decrement(state, payload) {
+        state.count -= payload;
       }
     };
     return providerFactory({ state, getters, mutations });
