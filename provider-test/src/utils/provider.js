@@ -20,12 +20,18 @@ class Provider {
     return this.#getters;
   }
 
+  typeGuard(partions) {
+    if (typeof partions !== 'object') throw new Error(`Provider Error: invalid partions: ${partions}`);
+  }
+
   setState(state) {
+    this.typeGuard(state);
     this.#state = Vue.observable(state);
     return this;
   }
 
   setGetters(getters) {
+    this.typeGuard(getters);
     const computed = {}
     Object.entries(getters).forEach(([key, value]) => {
       Object.defineProperty(computed, key, {
@@ -40,6 +46,7 @@ class Provider {
   }
 
   setMutations(mutations) {
+    this.typeGuard(mutations)
     this.#mutations = Object.entries(mutations).reduce((acc, [key, value]) => {
       acc[key] = payload => value(this.#state, payload);
       return acc;
