@@ -15,6 +15,7 @@ export default {
   methods: {
     async onClick() {
       this.name = await this.$modal(HelloModal, { gender: 'male' });
+      console.log("HELLO");
     },
   },
 };

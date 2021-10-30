@@ -2,6 +2,8 @@
   <div>
     <TextInput v-model="title" validation="required" title="Title" />
     <Checkbox v-model="completed" />
+    <h3>COUNT: {{ state.count }}</h3>
+    <h3>double: {{ getters.double }}</h3>
   </div>
 </template>
 
@@ -10,7 +12,7 @@ import TextInput from './general/TextInput.vue';
 import Checkbox from './general/Checkbox.vue';
 
 export default {
-  inject: ['state', 'dispatch'],
+  inject: ['state', 'dispatch', 'getters'],
   components: {TextInput, Checkbox},
   computed: {
     title: {

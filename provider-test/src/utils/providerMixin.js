@@ -50,7 +50,7 @@ const entryTypeTable = ({ contextValue, target, entries }) => {
 };
 
 export const mapContextState = state => {
-  const _state = {};
+  let _state = {};
   const contextValue = 'state';
   entryTypeTable({ 
     contextValue, 
@@ -61,12 +61,15 @@ export const mapContextState = state => {
     inject: [contextValue],
     computed: {
       ..._state
+    },
+    beforeDestroy() {
+      _state = null;
     }
   };
 };
 
 export const mapContextGetters = getters => {
-  const _getters = {};
+  let _getters = {};
   const contextValue = 'getters';
   entryTypeTable({
     contextValue,
@@ -77,12 +80,15 @@ export const mapContextGetters = getters => {
     inject: [contextValue],
     computed: {
       ..._getters
+    },
+    beforeDestroy() {
+      _getters = null;
     }
   };
 };
 
-export const mapConetextMutations = mutations => {
-  const _mutations = {};
+export const mapContextMutations = mutations => {
+  let _mutations = {};
   const contextValue = 'mutations';
   entryTypeTable({
     contextValue,
@@ -93,6 +99,9 @@ export const mapConetextMutations = mutations => {
     inject: [contextValue],
     methods: {
       ..._mutations
+    },
+    beforeDestroy() {
+      _mutations = null;
     }
   };
 };

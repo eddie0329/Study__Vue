@@ -10,13 +10,19 @@ export default {
       title: '',
       temp: 'helo',
       completed: false,
-      eddie: {firstname: 'hello', lastname: '', address: ''}
+      count: 0,
+      eddie: { firstname: 'hello', lastname: '', address: '' }
+    };
+  },
+  computed: {
+    double() {
+      return this.count * 2;
     }
   },
   methods: {
     dispatch(action) {
-      switch(action.type) {
-        case 'changeTitle': 
+      switch (action.type) {
+        case 'changeTitle':
           this.title = action.payload;
           break;
         case 'changeTemp':
@@ -29,10 +35,13 @@ export default {
           this.eddie.firstname = 'choi';
           // this.eddie = { ...this.eddie, firstname: 'choi' };
           break;
+        case 'changeCount':
+          this.count += action.payload;
+          break;
         default:
           throw new Error('No Type Matched');
       }
-    },
+    }
   }
-}
+};
 </script>

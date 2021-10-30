@@ -1,12 +1,20 @@
 import Vue from 'vue';
 import { err } from './errhandler';
+import { mapContextState, mapContextGetters, mapContextMutations } from './providerMixin';
+
 class Provider {
   #state;
   #mutations;
   #getters;
+  /** @type{string} */
+  #name;
 
   constructor() {
     return this;
+  }
+
+  get name () {
+    return this.#name;
   }
 
   get state() {
@@ -39,6 +47,11 @@ class Provider {
     };
   }
 
+  setName(name) {
+    this.#name = name;
+    return this;
+  }
+
   setState(state) {
     this.partionsTypeValidator.validate(state);
     this.#state = Vue.observable(state);
@@ -69,19 +82,36 @@ class Provider {
     return this;
   }
 
-  build() {
+
+  build(createContextProvider) {
     return {
-      state: this.#state,
-      mutations: this.#mutations,
-      getters: this.#getters
+      mapContextState,
+      mapContextGetters,
+      mapContextMutations,
+      ContextProvider: createContextProvider({ name: this.#name, state: this.state, mutations: this.#mutations, getters: this.#getters })
     };
   }
 }
 
-export const providerFactory = ({ state, getters, mutations }) => {
+const createContextProvider = ({ name, state, getters, mutations }) => ({
+  name,
+  provide() {
+    return {
+      state,
+      mutations,
+      getters,
+    }
+  },
+  render(h) {
+    return h('div', {}, this.$slots.default);
+  }
+});
+
+export const providerFactory = ({ name, state, getters, mutations }) => {
   return new Provider()
+    .setName(name)
     .setState(state)
     .setMutations(mutations)
     .setGetters(getters)
-    .build();
+    .build(createContextProvider);
 };

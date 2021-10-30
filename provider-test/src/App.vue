@@ -8,11 +8,20 @@
 
 <script>
 import Child1 from './components/Child1.vue';
-import ContextProvider from './utils/ContextProvider.vue';
+import {ContextProvider} from './provider/counterProvider';
 
 export default {
   name: 'App',
-  components: { Child1, ContextProvider },
+  provide() {
+    return {
+      count: 0,
+      double: 2,
+    }
+  },
+  components: { Child1 , ContextProvider },
+  created() {
+    console.log(ContextProvider);
+  }
 };
 </script>
 

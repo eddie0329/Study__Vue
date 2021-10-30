@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="bffaad51-5b83-4ee9-8a1f-cba2fa668a0c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/modal-test-vue/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/modal-test-vue/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modal-test-vue/src/components/InputContainer.vue" beforeDir="false" afterPath="$PROJECT_DIR$/modal-test-vue/src/components/InputContainer.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/provider-test/src/utils/providerMixin.js" beforeDir="false" afterPath="$PROJECT_DIR$/provider-test/src/utils/providerMixin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/provider/src/components/Child1.vue" beforeDir="false" afterPath="$PROJECT_DIR$/provider/src/components/Child1.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/provider/src/components/Child3.vue" beforeDir="false" afterPath="$PROJECT_DIR$/provider/src/components/Child3.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/provider/src/components/ChildInputContainer.vue" beforeDir="false" afterPath="$PROJECT_DIR$/provider/src/components/ChildInputContainer.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/provider/src/provider/AbstractProvider.vue" beforeDir="false" afterPath="$PROJECT_DIR$/provider/src/provider/AbstractProvider.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/provider/src/provider/InputsProvider.vue" beforeDir="false" afterPath="$PROJECT_DIR$/provider/src/provider/InputsProvider.vue" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="20BSE31GNy4vjZHJR9AQb0XNYGJ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bffaad51-5b83-4ee9-8a1f-cba2fa668a0c" name="Default Changelist" comment="" />
+      <created>1635516375861</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1635516375861</updated>
+      <workItem from="1635516379805" duration="100000" />
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

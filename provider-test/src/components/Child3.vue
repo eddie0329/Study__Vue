@@ -8,13 +8,13 @@
 </template>
 
 <script>
-import { mapContextState, mapContextGetters, mapConetextMutations } from '../utils/providerMixin';
+import { mapContextState, mapContextGetters, mapContextMutations } from '../provider/counterProvider';
 
 export default {
   mixins: [
     mapContextState(['count']),
     mapContextGetters({ double: 'double' }),
-    mapConetextMutations({ inc: 'increment', dec: 'decrement' })
+    mapContextMutations({ inc: 'increment', dec: 'decrement' })
   ]
 };
 </script>

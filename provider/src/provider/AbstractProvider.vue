@@ -3,12 +3,18 @@
 </template>
 
 <script>
+import Vue from 'vue';
+
 export default {
   name: 'AbstractProvider',
   provide() {
     return {
       state: this.$data,
-      dispatch: this.dispatch
+      dispatch: this.dispatch,
+      getters: { ...Object.keys((this.$options?.computed ?? {})).reduce((acc, cu) => {
+        acc[cu] = Vue.observable(this[cu]);
+        return acc;
+      }, {}) }
     }
   },
   methods: {

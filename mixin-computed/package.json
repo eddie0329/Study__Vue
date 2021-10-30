@@ -1,0 +1,16 @@
+{
+  "name": "mixin-computed",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "test": "npx run lerna test",
+    "clean": "npx run lerna clean",
+    "bootstrap": "npx run lerna bootstap",
+    "serve": "npx lerna run serve --scope={@project/server, @project/web}"
+  }
+}
